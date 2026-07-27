@@ -7,7 +7,6 @@
   <link rel="shortcut icon" type="image/x-icon" href="img/fav.svg">
   <title>DragonRent - Alquiler de Dragones</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Fuentes-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap"
@@ -15,12 +14,18 @@
 </head>
 
 <body>
-  <!-- Navegación -->
   <header>
     <div class="barra-navegacion">
       <div class="nav-contenedor">
         <a href="#inicio" class="nav-logo">GREMIO DRACONIS</a>
-        <nav aria-label="Navegación principal">
+
+        <button id="btnHamburguesa" class="btn-hamburguesa" title="Abrir menú de navegación">
+          <span class="linea"></span>
+          <span class="linea"></span>
+          <span class="linea"></span>
+        </button>
+
+        <nav id="menuNavegacion">
           <ul class="menu-links">
             <li><a href="#inicio">Gremio</a></li>
             <li><a href="#catalogo">Catálogo</a></li>
@@ -42,8 +47,8 @@
     </section>
 
     <!-- Sección Catálogo -->
-    <section id="catalogo" class="catalogo" aria-labelledby="titulo-catalogo">
-      <h2 id="titulo-catalogo">Catálogo de Monturas</h2>
+    <section id="catalogo" class="catalogo">
+      <h2>Catálogo de Monturas</h2>
 
       <div class="grid-dragones">
 
@@ -104,7 +109,7 @@
           </div>
         </article>
 
-        <!-- Dragón 4: Premium -->
+        <!-- Dragón 4 Premium -->
         <article class="tarjeta-dragon premium">
           <span class="etiqueta-premium">Exclusivo</span>
           <img src="img/dragon4.jpg" alt="Soberano Dorado de la Cancillería">
@@ -124,7 +129,7 @@
           </div>
         </article>
 
-        <!-- Dragón 5: Agotado -->
+        <!-- Dragón 5 Agotado -->
         <article class="tarjeta-dragon agotado">
           <span class="etiqueta-agotado">En Hibernación</span>
           <img src="img/dragon5.jpg" alt="Sombra Ancestral no disponible">
@@ -144,7 +149,7 @@
           </div>
         </article>
 
-        <!-- Dragón 6: Cargo / Transporte -->
+        <!-- Dragón 6 -->
         <article class="tarjeta-dragon">
           <img src="img/dragon6.jpg" alt="Titán de Hierro para carga pesada">
           <div class="tarjeta-info">
@@ -166,9 +171,9 @@
       </div>
     </section>
     <!-- Sección Formulario -->
-    <section id="solicitar" class="seccion-solicitud" aria-labelledby="titulo-solicitud">
+    <section id="solicitar" class="seccion-solicitud">
       <div class="tarjeta-solicitud">
-        <h3 id="titulo-solicitud">Cotización de Vuelo</h3>
+        <h3>Cotización de Vuelo</h3>
 
         <form id="formPresupuesto" novalidate>
           <div>
@@ -193,11 +198,12 @@
             <label for="distanciaViaje">¿A cuántos kilómetros está tu destino?</label>
             <input type="number" id="distanciaViaje" placeholder="Ej. 60 (Máx. 2250)" min="5" max="2250" required>
           </div>
-
           <button type="button" id="btnCalcularDias">Calcular cotización</button>
         </form>
 
-        <div id="resultadoReserva" class="resultado-box" aria-live="polite"></div>
+        <div id="resultadoReserva" class="resultado-box"></div>
+        <button type="button" id="btnRestaurar" class="btn-restaurar">Restablecer</button>
+        
       </div>
     </section>
   </main>
@@ -207,7 +213,7 @@
     <p class="footer-sub">Registro Oficial de la Cancillería de Comercio — Licencia</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="javascript.js"></script>
 </body>
 
 </html>
