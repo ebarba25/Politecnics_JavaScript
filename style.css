@@ -3,12 +3,12 @@
   --surface: #111115;
   --surface-hover: #191920;
   --line: #262630;
-  --line-gold: #856f47; 
+  --line-gold: #856f47;
   --text: #ffffff;
   --text-muted: #a0a0b0;
-  --accent: #c9a86c;    
-  --emerald: #387658;   
-  
+  --accent: #c9a86c;
+  --emerald: #387658;
+
   --font-display: "Cinzel", Georgia, serif;
   --font-body: "Inter", -apple-system, sans-serif;
 }
@@ -118,6 +118,38 @@ header {
   color: var(--text);
 }
 
+.btn-hamburguesa {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 110;
+}
+
+.btn-hamburguesa .linea {
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-hamburguesa.activo .linea:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.btn-hamburguesa.activo .linea:nth-child(2) {
+  opacity: 0;
+}
+
+.btn-hamburguesa.activo .linea:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
 .descripcion {
   padding: 90px 0 70px;
   text-align: center;
@@ -156,12 +188,17 @@ header {
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
 }
 
 .tarjeta-dragon:hover {
   border-color: var(--line-gold);
+  background: var(--surface-hover);
   transform: translateY(-4px);
+}
+
+.tarjeta-dragon.premium {
+  border-color: var(--accent);
 }
 
 .tarjeta-dragon img {
@@ -222,7 +259,7 @@ header {
   position: absolute;
   top: 16px;
   right: 16px;
-  z-index: 10; 
+  z-index: 10;
   background-color: var(--accent);
   color: var(--ink);
   font-size: 0.68rem;
@@ -236,7 +273,7 @@ header {
   position: absolute;
   top: 16px;
   right: 16px;
-  z-index: 10; 
+  z-index: 10;
   background-color: var(--surface);
   border: 1px solid var(--line);
   color: var(--text-muted);
@@ -295,16 +332,16 @@ select {
   font-size: 0.95rem;
   outline: none;
   border-radius: 0;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave añadida */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input[type="number"]:focus,
 select:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 10px rgba(201, 168, 108, 0.25); /* Resplandor dorado añadido */
+  box-shadow: 0 0 10px rgba(201, 168, 108, 0.25);
 }
 
-button {
+#btnCalcularDias {
   background: transparent;
   color: var(--accent);
   border: 1px solid var(--accent);
@@ -318,13 +355,34 @@ button {
   margin-top: 12px;
 }
 
-button:hover {
+#btnCalcularDias:hover {
   background: var(--accent);
   color: var(--ink);
 }
 
+.btn-restaurar {
+  display: none;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--line);
+  padding: 12px 28px;
+  font-size: 0.78rem;
+  font-family: var(--font-body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 24px auto 0;
+}
+
+.btn-restaurar:hover {
+  border-color: var(--text-muted);
+  color: var(--text);
+}
+
 a:focus-visible,
-button:focus-visible,
+#btnCalcularDias:focus-visible,
+.btn-restaurar:focus-visible,
 input:focus-visible,
 select:focus-visible {
   outline: 2px solid var(--accent) !important;
@@ -338,7 +396,8 @@ select:focus-visible {
   border: 1px solid var(--line-gold);
   font-size: 0.95rem;
   display: none;
-  animation: aparecerRuta 0.4s ease-out forwards; 
+  animation: aparecerRuta 0.4s ease-out forwards;
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .resultado-box p {
@@ -359,7 +418,7 @@ select:focus-visible {
 }
 
 .resultado-box .lista-paradas {
-  list-style: none; 
+  list-style: none;
   margin-top: 16px;
   padding-left: 10px;
 }
@@ -395,21 +454,21 @@ footer {
 }
 
 .resultado-box.es-error {
-  border-color: #ef4444; 
+  border-color: #ef4444;
   background-color: rgba(239, 68, 68, 0.08);
-  color: #fca5a5;     
+  color: #fca5a5;
 }
 
 .resultado-box.es-alerta {
   border-color: var(--accent);
   background-color: rgba(201, 168, 108, 0.08);
-  color: #fef08a;      
+  color: #fef08a;
 }
 
 .resultado-box.es-exito {
-  border-color: #10b981;
-  background-color: rgba(16, 185, 129, 0.08);
-  color: #6ee7b7;     
+  border-color: var(--emerald);
+  background-color: rgba(56, 118, 88, 0.12);
+  color: #6ee7b7;
 }
 
 .resultado-box.es-exito .resaltado,
@@ -427,5 +486,38 @@ footer {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .btn-hamburguesa {
+    display: flex;
+  }
+
+  #menuNavegacion {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(8, 8, 10, 0.98);
+    border-bottom: 1px solid var(--line-gold);
+    padding: 20px 0;
+    backdrop-filter: blur(10px);
+  }
+
+  #menuNavegacion.menu-abierto {
+    display: block;
+    animation: aparecerRuta 0.3s ease-out forwards;
+  }
+
+  .menu-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .menu-links a {
+    font-size: 1rem;
   }
 }
