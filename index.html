@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/x-icon" href="img/fav.svg">
+  <title>DragonRent - Alquiler de Dragones</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="barra-navegacion">
+      <div class="nav-contenedor">
+        <a href="#inicio" class="nav-logo">GREMIO DRACONIS</a>
+
+        <button id="btnHamburguesa" class="btn-hamburguesa" title="Abrir menú de navegación">
+          <span class="linea"></span>
+          <span class="linea"></span>
+          <span class="linea"></span>
+        </button>
+
+        <nav id="menuNavegacion">
+          <ul class="menu-links">
+            <li><a href="#inicio">Gremio</a></li>
+            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#solicitar">Solicitud</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido-principal">
+    <!-- Sección Inicio -->
+    <section id="inicio" class="descripcion">
+      <h2>Monturas de Expedición & Carga</h2>
+      <p>
+        Facilitamos el arrendamiento de dragones acreditados para travesías comerciales, reconocimientos de alta montaña
+        y escolta táctica. Todas las monturas cuentan con certificación de la Cancillería Real.
+      </p>
+    </section>
+
+    <!-- Sección Catálogo -->
+    <section id="catalogo" class="catalogo">
+      <h2>Catálogo de Monturas</h2>
+
+      <div class="grid-dragones">
+
+        <!-- Dragón 1 -->
+        <article class="tarjeta-dragon">
+          <img src="img/dragon1.jpg" alt="Lagartija Urbana en reposo">
+          <div class="tarjeta-info">
+            <h3>Lagartija Urbana</h3>
+            <ul>
+              <li><span class="campo">Autonomía</span><span>Hasta 150 km</span></li>
+              <li><span class="campo">Combustible</span><span>Insectos y bayas</span></li>
+              <li><span class="campo">Aliento</span><span>Chispas térmicas</span></li>
+              <li><span class="campo">Tarifa básica</span><span>50 Monedas / día</span></li>
+              <li><span class="campo">Experiencia</span><span>Aprendiz</span></li>
+            </ul>
+            <p class="dragon-desc">
+              Montura ágil de baja envergadura, ideal para trayectos urbanos diarios. Cabe en cualquier plaza de
+              aparcamiento de escobas y es sumamente dócil.
+            </p>
+          </div>
+        </article>
+
+        <!-- Dragón 2 -->
+        <article class="tarjeta-dragon">
+          <img src="img/dragon2.jpg" alt="Furia Mística listo para el vuelo">
+          <div class="tarjeta-info">
+            <h3>Furia Mística</h3>
+            <ul>
+              <li><span class="campo">Autonomía</span><span>Hasta 500 km</span></li>
+              <li><span class="campo">Combustible</span><span>Ovinos de pasto</span></li>
+              <li><span class="campo">Aliento</span><span>Plasma lila</span></li>
+              <li><span class="campo">Tarifa básica</span><span>150 Monedas / día</span></li>
+              <li><span class="campo">Experiencia</span><span>Intermedio (1 año)</span></li>
+            </ul>
+            <p class="dragon-desc">
+              El equilibrio perfecto entre elegancia, sigilo y confort. Sus escamas oscuras absorben la luz para vuelos
+              nocturnos. Incluye asientos ergonómicos.
+            </p>
+          </div>
+        </article>
+
+        <!-- Dragón 3 -->
+        <article class="tarjeta-dragon">
+          <img src="img/dragon3.jpg" alt="Destructor de Reinos de clase Alfa">
+          <div class="tarjeta-info">
+            <h3>Destructor de Reinos</h3>
+            <ul>
+              <li><span class="campo">Autonomía</span><span>Hasta 1000 km</span></li>
+              <li><span class="campo">Combustible</span><span>Ganado mayor</span></li>
+              <li><span class="campo">Aliento</span><span>Fuego azul</span></li>
+              <li><span class="campo">Tarifa básica</span><span>500 Monedas / día</span></li>
+              <li><span class="campo">Experiencia</span><span>Maestro (10 años)</span></li>
+            </ul>
+            <p class="dragon-desc">
+              Fuerza de la naturaleza de clase Alfa con visión periférica completa. Velocidad supersónica y climatizador
+              bizona integrado.
+            </p>
+          </div>
+        </article>
+
+        <!-- Dragón 4 Premium -->
+        <article class="tarjeta-dragon premium">
+          <span class="etiqueta-premium">Exclusivo</span>
+          <img src="img/dragon4.jpg" alt="Soberano Dorado de la Cancillería">
+          <div class="tarjeta-info">
+            <h3>Soberano Dorado</h3>
+            <ul>
+              <li><span class="campo">Autonomía</span><span>Hasta 2000 km</span></li>
+              <li><span class="campo">Combustible</span><span>Ambrosía selecta</span></li>
+              <li><span class="campo">Aliento</span><span>Llamarada sacra</span></li>
+              <li><span class="campo">Tarifa básica</span><span>1200 Monedas / día</span></li>
+              <li><span class="campo">Experiencia</span><span>Maestro (15 años)</span></li>
+            </ul>
+            <p class="dragon-desc">
+              La cumbre del transporte diplomático. Escamas bañadas en oro alquímico reflectante, vuelo ultrasilencioso
+              y piloto automático telepático.
+            </p>
+          </div>
+        </article>
+
+        <!-- Dragón 5 Agotado -->
+        <article class="tarjeta-dragon agotado">
+          <span class="etiqueta-agotado">En Hibernación</span>
+          <img src="img/dragon5.jpg" alt="Sombra Ancestral no disponible">
+          <div class="tarjeta-info">
+            <h3>Sombra Ancestral</h3>
+            <ul>
+              <li><span class="campo">Autonomía</span><span>Hasta 800 km</span></li>
+              <li><span class="campo">Combustible</span><span>Carbón refinado</span></li>
+              <li><span class="campo">Aliento</span><span>Fuego negro fatuo</span></li>
+              <li><span class="campo">Tarifa básica</span><span>300 Monedas / día</span></li>
+              <li><span class="campo">Experiencia</span><span>Intermedio (5 años)</span></li>
+            </ul>
+            <p class="dragon-desc">
+              Un clásico icónico demandado por coleccionistas. Actualmente todas las unidades se encuentran en periodo
+              de hibernación estacional.
+            </p>
+          </div>
+        </article>
+
+        <!-- Dragón 6 -->
+        <article class="tarjeta-dragon">
+          <img src="img/dragon6.jpg" alt="Titán de Hierro para carga pesada">
+          <div class="tarjeta-info">
+            <h3>Titán de Hierro</h3>
+            <ul>
+              <li><span class="campo">Autonomía</span><span>Hasta 750 km</span></li>
+              <li><span class="campo">Combustible</span><span>Omnívoro</span></li>
+              <li><span class="campo">Aliento</span><span>Vapor a presión</span></li>
+              <li><span class="campo">Tarifa básica</span><span>250 Monedas / día</span></li>
+              <li><span class="campo">Experiencia</span><span>Intermedio (7 años)</span></li>
+            </ul>
+            <p class="dragon-desc">
+              Diseñado para mudanzas transfronterizas o transporte de mercancías pesadas. Fisonomía acorazada resistente
+              a tormentas extremas.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+    <!-- Sección Formulario -->
+    <section id="solicitar" class="seccion-solicitud">
+      <div class="tarjeta-solicitud">
+        <h3>Cotización de Vuelo</h3>
+
+        <form id="formPresupuesto" novalidate>
+          <div>
+            <label for="selectorDragon">Elige tu dragón</label>
+            <select id="selectorDragon" required>
+              <option id="opcionPrincipal" value="" disabled selected hidden>Escoge tu transporte</option>
+              <option value="50">Lagartija Urbana</option>
+              <option value="150">Furia Mística</option>
+              <option value="250">Titán de Hierro</option>
+              <option value="500">Destructor de Reinos</option>
+              <option value="300" disabled>Sombra Ancestral (En Hibernación)</option>
+              <option value="1200">Soberano Dorado</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="diasAlquiler">¿Cuántos días lo vas a alquilar?</label>
+            <input type="number" id="diasAlquiler" placeholder="Ej. 3 (Máx. 15)" min="1" max="15" required>
+          </div>
+
+          <div>
+            <label for="distanciaViaje">¿A cuántos kilómetros está tu destino?</label>
+            <input type="number" id="distanciaViaje" placeholder="Ej. 60 (Máx. 2250)" min="5" max="2250" required>
+          </div>
+          <button type="button" id="btnCalcularDias">Calcular cotización</button>
+        </form>
+
+        <div id="resultadoReserva" class="resultado-box"></div>
+        <button type="button" id="btnRestaurar" class="btn-restaurar">Restablecer</button>
+        
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Gremio Real de Dragones. Todos los derechos reservados.</p>
+    <p class="footer-sub">Registro Oficial de la Cancillería de Comercio — Licencia</p>
+  </footer>
+
+  <script src="javascript.js"></script>
+</body>
+
+</html>
