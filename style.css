@@ -11,6 +11,54 @@
 
   --font-display: "Cinzel", Georgia, serif;
   --font-body: "Inter", -apple-system, sans-serif;
+
+  --error-fondo: rgba(239, 68, 68, 0.15);
+  --error-borde: #ef4444;
+  --error-texto: #fca5a5;
+
+  --alerta-fondo: rgba(201, 168, 108, 0.15);
+  --alerta-borde: #c9a86c;
+  --alerta-texto: #fef08a;
+
+  --exito-fondo: rgba(56, 118, 88, 0.2);
+  --exito-borde: #387658;
+  --exito-texto: #86efac;
+}
+
+body.modo-dia {
+  --ink: #e8e3d9;          
+  --surface: #f4efe6;      
+  --surface-hover: #eae4d8;
+  --line: #bebaa8;         
+  --line-gold: #705018;    
+  --text: #1a1917;         
+  --text-muted: #3b3a36;   
+  --accent: #6b4d11;
+
+  --error-fondo: #fde8e8;
+  --error-borde: #991b1b;
+  --error-texto: #7f1d1d;
+
+  --alerta-fondo: #fef3c7;
+  --alerta-borde: #92400e;
+  --alerta-texto: #78350f;
+
+  --exito-fondo: #dcfce7;
+  --exito-borde: #166534;
+  --exito-texto: #14532d;
+}
+
+body.modo-dia header {
+  background: rgba(232, 227, 217, 0.95);
+}
+
+body.modo-dia .btn-modo-dia {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: var(--line);
+}
+
+body.modo-dia #btnCalcularDias:hover {
+  color: #ffffff; 
 }
 
 * {
@@ -103,6 +151,28 @@ header {
   list-style: none;
   display: flex;
   gap: 36px;
+  align-items: center;
+}
+
+.btn-modo-dia {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--accent);
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+  padding: 6px 12px;
+}
+
+.btn-modo-dia:hover {
+  border-color: var(--accent);
+  background: rgba(201, 168, 108, 0.15);
+  transform: translateY(-1px);
 }
 
 .menu-links a {
@@ -439,6 +509,38 @@ select:focus-visible {
   font-size: 0.8rem;
 }
 
+.resultado-box.es-error {
+  border-color: var(--error-borde);
+  background-color: var(--error-fondo);
+  color: var(--error-texto);
+}
+
+.resultado-box.es-alerta {
+  border-color: var(--alerta-borde);
+  background-color: var(--alerta-fondo);
+  color: var(--alerta-texto);
+}
+
+.resultado-box.es-exito {
+  border-color: var(--exito-borde);
+  background-color: var(--exito-fondo);
+  color: var(--exito-texto);
+}
+
+.resultado-box.es-exito p,
+.resultado-box.es-error p,
+.resultado-box.es-alerta p {
+  color: inherit;
+}
+
+.resultado-box.es-exito .resaltado,
+.resultado-box.es-error .resaltado,
+.resultado-box.es-alerta .resaltado {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
 footer {
   text-align: center;
   padding: 60px 20px;
@@ -451,31 +553,6 @@ footer {
 .footer-sub {
   margin-top: 8px;
   opacity: 0.6;
-}
-
-.resultado-box.es-error {
-  border-color: #ef4444;
-  background-color: rgba(239, 68, 68, 0.08);
-  color: #fca5a5;
-}
-
-.resultado-box.es-alerta {
-  border-color: var(--accent);
-  background-color: rgba(201, 168, 108, 0.08);
-  color: #fef08a;
-}
-
-.resultado-box.es-exito {
-  border-color: var(--emerald);
-  background-color: rgba(56, 118, 88, 0.12);
-  color: #6ee7b7;
-}
-
-.resultado-box.es-exito .resaltado,
-.resultado-box.es-error .resaltado,
-.resultado-box.es-alerta .resaltado {
-  font-weight: 700;
-  text-decoration: underline;
 }
 
 @keyframes aparecerRuta {
@@ -494,13 +571,17 @@ footer {
     display: flex;
   }
 
+  .btn-modo-dia {
+    margin: 10px auto 0 auto;
+  }
+
   #menuNavegacion {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(8, 8, 10, 0.98);
+    background: var(--ink); 
     border-bottom: 1px solid var(--line-gold);
     padding: 20px 0;
     backdrop-filter: blur(10px);
