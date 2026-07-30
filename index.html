@@ -30,6 +30,9 @@
             <li><a href="#inicio">Gremio</a></li>
             <li><a href="#catalogo">Catálogo</a></li>
             <li><a href="#solicitar">Solicitud</a></li>
+            <li><button id="btnModoDia" class="btn-modo-dia" aria-label="Cambiar modo de color">
+                <span class="icono-tema">🌙</span>
+              </button></li>
           </ul>
         </nav>
       </div>
@@ -179,13 +182,13 @@
           <div>
             <label for="selectorDragon">Elige tu dragón</label>
             <select id="selectorDragon" required>
-              <option id="opcionPrincipal" value="" disabled selected hidden>Escoge tu transporte</option>
-              <option value="50">Lagartija Urbana</option>
-              <option value="150">Furia Mística</option>
-              <option value="250">Titán de Hierro</option>
-              <option value="500">Destructor de Reinos</option>
-              <option value="300" disabled>Sombra Ancestral (En Hibernación)</option>
-              <option value="1200">Soberano Dorado</option>
+              <option value="" disabled selected hidden>Escoge tu transporte</option>
+              <option value="1">Lagartija Urbana</option>
+              <option value="2">Furia Mística</option>
+              <option value="3">Titán de Hierro</option>
+              <option value="5">Destructor de Reinos</option>
+              <option value="4" disabled>Sombra Ancestral (En Hibernación)</option>
+              <option value="6">Soberano Dorado</option>
             </select>
           </div>
 
@@ -203,7 +206,7 @@
 
         <div id="resultadoReserva" class="resultado-box"></div>
         <button type="button" id="btnRestaurar" class="btn-restaurar">Restablecer</button>
-        
+
       </div>
     </section>
   </main>
