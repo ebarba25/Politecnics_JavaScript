@@ -1,3 +1,14 @@
+// ARRAY DE OBJETOS
+// Cada dragón tiene su id (para identificarlo desde el select), nombre, precio y autonomía
+let catalogoDragones = [
+  { id: 1, nombre: "Lagartija Urbana", precio: 50, autonomia: 150 },
+  { id: 2, nombre: "Furia Mística", precio: 150, autonomia: 500 },
+  { id: 3, nombre: "Titán de Hierro", precio: 250, autonomia: 750 },
+  { id: 4, nombre: "Sombra Ancestral", precio: 300, autonomia: 800 },
+  { id: 5, nombre: "Destructor de Reinos", precio: 500, autonomia: 1000 },
+  { id: 6, nombre: "Soberano Dorado", precio: 1200, autonomia: 2000 },
+];
+
 // DECLARACIONES
 let botonReserva = document.getElementById("btnCalcularDias"); // Botón Calcular cotización
 let dragonesSelect = document.getElementById("selectorDragon"); // select
@@ -5,6 +16,9 @@ let dragonesDias = document.getElementById("diasAlquiler"); // Input de los día
 let inputDistancia = document.getElementById("distanciaViaje"); // Input de la distancia en km
 let resultadoReserva = document.getElementById("resultadoReserva"); // Caja resultado
 let btnRestaurar = document.getElementById("btnRestaurar"); // Botón "Restablecer"
+
+// Bóton dia / noche
+let btnModoDia = document.getElementById("btnModoDia");
 
 //Menú hamburguesa
 let btnHamburguesa = document.getElementById("btnHamburguesa"); // Botón hamburguesa
@@ -14,7 +28,6 @@ let enlacesMenu = document.querySelectorAll(".menu-links a"); // Todos los a
 // Guardamos el texto original del botón para poder devolverlo tal cual estaba
 let textoOriginalBoton = botonReserva.textContent;
 
-
 // LISTENERS
 // Ratón
 botonReserva.addEventListener("click", procesarReserva); // Al hacer clic procesarReserva
@@ -23,6 +36,20 @@ botonReserva.addEventListener("click", procesarReserva); // Al hacer clic proces
 dragonesSelect.addEventListener("keydown", comprobarTeclaDragon); // Detecta teclas en el select
 dragonesDias.addEventListener("keydown", comprobarTeclaDragon); // Detecta teclas en el input de días
 inputDistancia.addEventListener("keydown", comprobarTeclaDragon); // Detecta teclas en el input de distancia
+
+// Para alternar el modo día/noche
+btnModoDia.addEventListener("click", () => {
+  document.body.classList.toggle("modo-dia");
+
+  // Cambiamos el icono según el modo activo
+  let icono = btnModoDia.querySelector(".icono-tema");
+
+  if (document.body.classList.contains("modo-dia")) {
+    icono.textContent = "☀️";
+  } else {
+    icono.textContent = "🌙";
+  }
+});
 
 // Efecto al pasar el ratón por encima del botón de calcular
 botonReserva.addEventListener("mouseover", function () {
@@ -35,7 +62,7 @@ botonReserva.addEventListener("mouseout", function () {
 // Botón de restaurar
 btnRestaurar.addEventListener("click", restaurarFormulario); // Limpia todo el formulario
 
-// Limpiar el mensaje de error 
+// Limpiar el mensaje de error
 dragonesSelect.addEventListener("change", limpiarError); // "change" al elegir otra opción del select
 dragonesDias.addEventListener("input", limpiarError); // "input" cada vez que se escribe algo
 inputDistancia.addEventListener("input", limpiarError); // Igual, pero en el campo de distancia
@@ -44,7 +71,7 @@ inputDistancia.addEventListener("input", limpiarError); // Igual, pero en el cam
 btnHamburguesa.addEventListener("click", () => {
   btnHamburguesa.classList.toggle("activo");
   menuNavegacion.classList.toggle("menu-abierto");
-});// Función auxiliar para cerrar el menú en eventos secundarios
+}); // Función auxiliar para cerrar el menú en eventos secundarios
 
 // Cerrar el menú si se hace clic fuera de él
 document.addEventListener("click", function (event) {
@@ -66,29 +93,25 @@ function cerrarMenu() {
   menuNavegacion.classList.remove("menu-abierto");
 }
 
-// Precios y autonomia dragones con if/else 
-function obtenerAutonomia(precioPorDia) {
-  if (precioPorDia === 50) {
-    return 150; // Lagartija Urbana
-  } else if (precioPorDia === 150) {
-    return 500; // Furia Mística
-  } else if (precioPorDia === 250) {
-    return 750; // Titán de Hierro
-  } else if (precioPorDia === 300) {
-    return 800; // Sombra Ancestral
-  } else if (precioPorDia === 500) {
-    return 1000; // Destructor de Reinos
-  } else if (precioPorDia === 1200) {
-    return 2000; // Soberano Dorado
-  } else {
-    return 0; // Precio no reconocido
+// Busca en el array el dragón cuyo id coincide con el que le pasamos
+function buscarDragonPorId(id) {
+  // BUCLE FOR
+  // Recorremos el catálogo de dragones posición por posición desde el principio hasta el final
+  for (let i = 0; i < catalogoDragones.length; i++) {
+    // Comprobar si el dragón actual es el que buscamos
+    if (catalogoDragones[i].id === id) {
+      // Devolver el dragón encontrado
+      return catalogoDragones[i]; // Lo encontramos, lo devolvemos
+    }
+    // Fin de la comprobación
   }
+  // FIN DEL BUCLE
+  return null; // Si no lo encontramos, devolvemos null
 }
-
 
 // Ruta
 function generarHojaDeRuta(distancia, autonomia, coste) {
-  resultadoReserva.style.display = "block"; 
+  resultadoReserva.style.display = "block";
   resultadoReserva.classList.remove("es-error", "es-alerta", "es-exito");
 
   // Cuanto aguanta el dragon
@@ -133,8 +156,8 @@ function generarHojaDeRuta(distancia, autonomia, coste) {
 
 // Mensajes para confirmar los datos de input
 function procesarReserva() {
-  resultadoReserva.textContent = ""; 
-  resultadoReserva.style.display = "none"; 
+  resultadoReserva.textContent = "";
+  resultadoReserva.style.display = "none";
   resultadoReserva.classList.remove("es-error", "es-alerta", "es-exito"); // Quitamos colores anteriores
 
   // Hay dragón
@@ -212,12 +235,12 @@ function procesarReserva() {
     return;
   }
 
-  // Todo correcto
-  let precioPorDia = Number(dragonesSelect.value); 
-  let autonomiaDragon = obtenerAutonomia(precioPorDia); 
+  // Todo correcto: buscamos el dragón en el array por su id
+  let idSeleccionado = Number(dragonesSelect.value);
+  let dragonSeleccionado = buscarDragonPorId(idSeleccionado);
 
   // Si no reconocemos el dragón
-  if (autonomiaDragon <= 0) {
+  if (dragonSeleccionado === null) {
     resultadoReserva.style.display = "block";
     resultadoReserva.classList.add("es-error");
     resultadoReserva.innerHTML = "<p><span class='resaltado'>Error:</span> No se reconoce este dragón.</p>";
@@ -225,10 +248,10 @@ function procesarReserva() {
     return;
   }
 
-  let costeTotal = precioPorDia * dias; // Precio por día por número de días
+  let costeTotal = dragonSeleccionado.precio * dias; // Precio por día por número de días
 
   // Resultado final
-  generarHojaDeRuta(distanciaUsuario, autonomiaDragon, costeTotal);
+  generarHojaDeRuta(distanciaUsuario, dragonSeleccionado.autonomia, costeTotal);
 }
 
 // Para el enter
@@ -238,28 +261,28 @@ function comprobarTeclaDragon(event) {
   }
 }
 
-// Si el usuario está corrigiendo un campo, quita el error 
+// Si el usuario está corrigiendo un campo, quita el error
 function limpiarError() {
   if (resultadoReserva.classList.contains("es-error")) {
     // Solo si se ha mostrando un error
-    resultadoReserva.textContent = ""; 
-    resultadoReserva.style.display = "none"; 
-    resultadoReserva.classList.remove("es-error"); 
+    resultadoReserva.textContent = "";
+    resultadoReserva.style.display = "none";
+    resultadoReserva.classList.remove("es-error");
     btnRestaurar.style.display = "none";
   }
 }
 
 // Restaura el formulario
 function restaurarFormulario() {
-  dragonesSelect.value = ""; 
-  dragonesDias.value = ""; 
-  inputDistancia.value = ""; 
+  dragonesSelect.value = "";
+  dragonesDias.value = "";
+  inputDistancia.value = "";
 
   resultadoReserva.textContent = "";
-  resultadoReserva.style.display = "none"; 
+  resultadoReserva.style.display = "none";
   resultadoReserva.classList.remove("es-error", "es-alerta", "es-exito");
 
-  btnRestaurar.style.display = "none"; 
+  btnRestaurar.style.display = "none";
 
   dragonesSelect.focus();
 }
